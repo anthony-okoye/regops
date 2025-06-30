@@ -11,6 +11,8 @@ class EmailService:
         self.api_token = settings.MAILTRAP_API_TOKEN
         self.sender_email = settings.MAILTRAP_SENDER_EMAIL
         self.sender_name = settings.MAILTRAP_SENDER_NAME
+        self.email_verification_url = settings.EMAIL_VERIFICATION_URL
+        self.password_reset_url = settings.PASSWORD_RESET_URL
         self.template_loader = jinja2.FileSystemLoader(
             searchpath=str(Path(__file__).parent.parent / 'templates')
         )
@@ -37,7 +39,7 @@ class EmailService:
 
     async def send_verification_email(self, email_to: str, token: str):
         template = self.template_env.get_template('verification_email.html')
-        verification_url = f"http://localhost:3000/verify-email?token={token}"
+        verification_url = f"{self.email_verification_url}?token={token}"
         html_content = template.render(
             verification_url=verification_url,
             project_name=settings.PROJECT_NAME
@@ -50,7 +52,7 @@ class EmailService:
 
     async def send_password_setup_email(self, email_to: str, token: str):
         template = self.template_env.get_template('password_setup.html')
-        setup_url = f"http://localhost:3000/set-password?token={token}"
+        setup_url = f"{self.password_reset_url}?token={token}"
         html_content = template.render(
             setup_url=setup_url,
             project_name=settings.PROJECT_NAME

@@ -20,6 +20,9 @@ class Settings(BaseSettings):
     VERSION: str = os.getenv("VERSION", "1.0.0")
     API_V1_STR: str = os.getenv("API_V1_STR", "/api/v1")
     
+    EMAIL_VERIFICATION_URL: str = os.getenv("EMAIL_VERIFICATION_URL", "https://regopsai.buzz/verify-email")
+    PASSWORD_RESET_URL: str = os.getenv("PASSWORD_RESET_URL", "https://regopsai.buzz/set-password")
+
     # Security
     SECRET_KEY: str = os.getenv("SECRET_KEY", "changeme")
     ACCESS_TOKEN_EXPIRE_MINUTES: int = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", 30))
