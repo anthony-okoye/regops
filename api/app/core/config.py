@@ -40,7 +40,7 @@ class Settings(BaseSettings):
     logger.data({"MAILTRAP_API_URL": MAILTRAP_API_URL})
     MAILTRAP_API_TOKEN: str = os.getenv("MAILTRAP_API_TOKEN", "")
     logger.data({"MAILTRAP_API_TOKEN": MAILTRAP_API_TOKEN})
-    MAILTRAP_SENDER_EMAIL: str = os.getenv("MAILTRAP_SENDER_EMAIL", "")
+    MAILTRAP_SENDER_EMAIL: str = os.getenv("MAILTRAP_SENDER_EMAIL", "noreply@regopsai.com")
     MAILTRAP_SENDER_NAME: str = os.getenv("MAILTRAP_SENDER_NAME", "RegOps AI Suite")
     MAILTRAP_INBOX_ID: str = os.getenv("MAILTRAP_INBOX_ID", "")  # Optional
     
